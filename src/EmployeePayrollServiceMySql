@@ -94,4 +94,42 @@ mysql> select * from employee_payroll where start between cast('2018-01-01' as d
 +----+-------+--------+------------+
 3 rows in set (0.03 sec)
 
+---------------------------------------------------------------------------------------
+UC6 -> Added gender field into table and updated the table according to employee gender
+---------------------------------------------------------------------------------------
+
+mysql> alter table employee_payroll add gender char(1) after name;
+Query OK, 0 rows affected (0.83 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(160) | NO   |     | NULL    |                |
+| gender | char(1)      | YES  |     | NULL    |                |
+| salary | double       | NO   |     | NULL    |                |
+| start  | date         | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.12 sec)
+
+mysql> update employee_payroll set gender ='F' where name ='Annu' or name='Choti';
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set gender ='M' where name ='Mannu';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+-------+--------+--------+------------+
+| id | name  | gender | salary | start      |
++----+-------+--------+--------+------------+
+|  1 | Annu  | F      |  10000 | 2018-01-03 |
+|  2 | Choti | F      |  50000 | 2019-11-13 |
+|  3 | Mannu | M      |  40000 | 2020-05-21 |
++----+-------+--------+--------+------------+
+3 rows in set (0.00 sec)
+
 
