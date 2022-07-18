@@ -58,3 +58,18 @@ mysql> Insert into employee_payroll(name,salary,start)values
 Query OK, 3 rows affected (0.52 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 
+------------------------------------------------------------------------------------------
+UC4 -> Retrieved all employee data from table employee_payroll of payroll_service database
+-------------------------------------------------------------------------------------------
+
+mysql> select * from employee_payroll;
++----+-------+--------+------------+
+| id | name  | salary | start      |
++----+-------+--------+------------+
+|  1 | Annu  |  10000 | 2018-01-03 |
+|  2 | Choti |  50000 | 2019-11-13 |
+|  3 | Mannu |  40000 | 2020-05-21 |
++----+-------+--------+------------+
+3 rows in set (0.03 sec)
+
+
