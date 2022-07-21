@@ -322,5 +322,29 @@ mysql> describe employee_payroll;
 +-------------+--------------+------+-----+---------+----------------+
 12 rows in set (0.00 sec)
 
+----------------------------------------------------------------------------
+UC10 -> Ability to make Annu as part of Sales and Marketing Department
+----------------------------------------------------------------------------
+
+mysql> update employee_payroll set department = 'sales' where name = 'Annu';
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into employee_payroll(name,department,gender,basic_pay,deduction,taxable_pay,income_tax,net_pay,start)values
+    -> ('Annu','marketing','F',3000000.00,1000000.00,2000000.00,5000000.00,1500000.00,'2018-01-03');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employee_payroll where name='Annu';
++----+------+-------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+| id | name | phoneNumber | address | department | gender | basic_pay | deduction | taxable_pay | income_tax | net_pay | start      |
++----+------+-------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+|  1 | Annu | NULL        | TBD     | sales      | F      |     10000 |         0 |           0 |          0 |       0 | 2018-01-03 |
+|  4 | Annu | NULL        | TBD     | marketing  | F      |   3000000 |   1000000 |     2000000 |    5000000 | 1500000 | 2018-01-03 |
++----+------+-------------+---------+------------+--------+-----------+-----------+-------------+------------+---------+------------+
+2 rows in set (0.04 sec)
+
+
+
+
 
 
